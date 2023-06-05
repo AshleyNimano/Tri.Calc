@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Sin calculater</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Anton&family=Montserrat:wght@500&family=Nunito:ital,wght@0,200;0,300;0,400;0,600;0,700;1,200;1,300;1,400&family=Permanent+Marker&family=Poppins:wght@600&family=Roboto:wght@400;500&family=Titillium+Web:wght@400;600;700&family=Ubuntu:ital,wght@0,500;0,700;1,400&family=Vina+Sans&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <nav><a href="index.html">Home</a></nav>
+  <!--Sin Calculation-->
+  <div class="container-sin">
+    <h2>Sin Calculation</h2>
+    <div class="inputs">
+      <input type="number" id="sinw"  placeholder="sin-Angle">
+      <input type="number"  id="sinhy"  placeholder="Hypotenuse">
+      <input type="number" id="singk"  placeholder="Ankhetus">
+    </div>
+    <button id="calc">Calc</button>
+    <div id="result-sin">Result</div>
+    <div id="other-values">Othe Values of the Triangle</div>
+  </div>
+  <script >
+    //Variablen
+    const sinW = document.getElementById("sinw");
+    const sinH = document.getElementById("sinhy");
+    const sinG = document.getElementById("singk");
+    const calcButton = document.getElementById("calc");
+    const sinResult = document.getElementById("result-sin");
+    const sinOther = document.getElementById("other-values");
+    const input = document.querySelector("input");
+    
+
+    //Funktion
+    //Die 2 hinter den let Variablen bedeuten, dasss das eine Variable ist welche geändert wird und
+
+    calcButton.addEventListener("click", function (event) {
+      event.preventDefault();
+      let sinW2, sinW3, sinH2, sinG2, sinE, sinO, sinA, sinS;
+      
+      //Error Funktionen
+      if (sinG.value === '0'){
+        
+        alert("Zero can't be a value!");
+        location.reload();
+
+      } else if (sinW === '0'){
+
+        alert("Zero can't be a value!");
+        location.reload();
+
+      } else if (sinH.value === sinG.value){
+
+        alert("Hypotenuse and opposite cathetus can't be the same!");
+        location.reload();
+        
+      } else if (sinH.value === '0'){
+        
+        alert("Zero can't be a value");
+        location.reload();
+
+        //Berechnungen
+        
+        
+      } else if (sinW.value === '') {
+        
+        //Berechnug des Winkels
+        let sinW2 =  Math.asin(sinG.value / sinH.value);
+        let sinW3 = sinW2 * (180 / Math.PI);  
+        console.log(sinW3)
+        sinResult.innerText = "Sin-Angle: " + Math.round(sinW3 * 10000) / 10000;
+
+        //Winkel und Ankatete
+        let sinO = 180 -90 - sinW3;
+        let sinG2 = Math.sqrt(Math.pow(sinH.value, 2) - Math.pow(sinG.value, 2))
+        sinOther.innerText = "Other Angle: " + (Math.round(sinO * 1000) / 1000) + " | adjacent: " + (Math.round(sinG2 * 1000) / 1000);
+      
+        
+      } else if (sinG.value === '') {
+
+        //Berechnugn der Gegenkatete
+        let sinH2 = Math.sin(sinW.value * (Math.PI / 180)) * sinH.value;
+        console.log(sinH2);
+        console.log("hello");
+        sinResult.innerText = "opposite cathetus: " + (Math.round(sinH2 * 1000) / 1000);
+
+        //Ankatete und anderer Winkel
+        sinO = 180 - sinW.value - 90;
+        sinA = Math.sqrt(Math.pow(sinH.value, 2) - Math.pow(sinH2, 2));
+  
+        sinOther.innerText = "Adjacent: " + (Math.round(sinA * 1000) / 1000) + " | Anderer Winkel: " + sinO;
+
+        
+      } else if (sinH.value === ''){
+
+        //Berechnung der Hypotenuse
+        let sinG2 = sinG.value / Math.sin((sinW.value * Math.PI) / 180);
+        console.log(sinG2);
+        sinResult.innerText = "Hypotenuse: " + sinG2;
+
+        //Berechnung von Ankatete  Hypotenuse
+        sinO = Math.sqrt(Math.pow(sinG2, 2) - Math.pow(sinG.value, 2));
+        sinS = 180 - sinW.value - 90;
+        sinOther.innerText = "Opposite Angle: " + sinS + " | adjacent: " + Math.round(sinO * 1000) / 1000;
+      } 
+    });
+
+
+  </script>
+</body>
+</html>

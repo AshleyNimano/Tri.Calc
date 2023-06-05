@@ -1,0 +1,174 @@
+body{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  height: 100vh;
+  font-family: Arial, Helvetica, sans-serif;
+  background: rgb(64,18,139);
+  background: linear-gradient(130deg, rgba(64,18,139,1) 0%, rgba(221,88,214,1) 32%, rgba(147,54,180,1) 70%, rgba(255,231,155,1) 100%);
+  background: cover;
+  background-position: center;
+}
+nav a{
+  color: white;
+  text-decoration: none;
+  font-size: 20px;
+}
+nav a:hover{
+  text-decoration: underline;
+  cursor: alias;
+}
+.button{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 50px;
+  border: none;
+  flex-direction: column;
+  gap: 20px;
+}
+.button button{
+  border: none;
+  padding: 10px 20px;
+  border-radius: 10px;
+  font-size: 20px;
+}
+#rs{
+  padding: 40px;
+}
+button{
+  transition: 0.5s;
+}
+button:hover{
+  background-color: rgb(131, 131, 131);
+}
+button:active{
+  background-color: black;
+  color: white;
+}
+
+.header{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: row;
+  gap: 20px;
+}
+#rs{
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: medium;
+  font-weight: 600;
+}
+#rs-s{
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: medium;
+  font-weight: 600;
+}
+#calc:hover{
+  cursor: pointer;
+}
+
+/*Calculation Style*/
+.container-sin{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  gap: 30px;
+  font-family: Arial, Helvetica, sans-serif;
+}
+.container-sin h2{
+  color: white;
+}
+
+.container-sin button{
+  padding: 5px 30px;
+  font-size: 20px;
+  border: solid 1px white;
+  background-color: white;
+  border-radius: 10px;
+  color: black;
+  transition: border 0.3;
+}
+.container-sin button:hover{
+  background-color: rgba(233,233,233,0.5);
+}
+#result-sin{
+  background: transparent;
+  border: white 1px;
+  height: 50px;
+  width: 300px;
+  color: white;
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 500;
+  text-align: center;
+}
+#other-values{
+  background: transparent;
+  height: 80px;
+  width: 400px;
+  color: white;
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 500;
+  text-align: center;
+}
+/*Input styling*/
+.inputs{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+}
+input{
+  outline: none;
+  border: none;
+  padding: 5px 20px;
+  text-align: center;
+  background: transparent;
+  border-bottom: 2px white solid;
+  color: white;
+  margin: 10px;
+}
+
+input::placeholder{
+  color: white;
+}
+
+/*Main Page Style*/
+
+.links-c{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  gap: 20px;
+  transition: 0.3s;
+  text-align: center;
+}
+.links-c h1{
+  color: white;
+  margin-bottom: 30px;
+}
+.links-c h3{
+  color: white;
+  margin-bottom: -20px;
+}
+.links-c a{
+  color: #FFE79B;
+  text-decoration: none;
+  transition: 0.5s all ease-in-out;
+  font-size: 20px;
+  font-weight: 700;
+}
+.links-c a:hover{
+  text-decoration: underline;
+  cursor: alias;
+  opacity: 0.7;
+}

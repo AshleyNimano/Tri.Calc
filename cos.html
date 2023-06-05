@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.5">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Cos Caculator</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Anton&family=Montserrat:wght@500&family=Nunito:ital,wght@0,200;0,300;0,400;0,600;0,700;1,200;1,300;1,400&family=Permanent+Marker&family=Poppins:wght@600&family=Roboto:wght@400;500&family=Titillium+Web:wght@400;600;700&family=Ubuntu:ital,wght@0,500;0,700;1,400&family=Vina+Sans&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <nav><a href="index.html">Home</a></nav>
+  <div class="container-sin">
+    <h2>Cos Calculation (in cm) </h2>
+    <div class="inputs">
+      <input type="number" id="sinw"  placeholder="Cos-Angle">
+      <input type="number"  id="sinhy"  placeholder="Hypotenuse">
+      <input type="number" id="singk"  placeholder="Ankhetus">
+    </div>
+    <button id="calc">Calc</button>
+    <div id="result-sin">Result</div>
+    <div id="other-values">Othe Values of the Triangle</div>
+  </div>
+  <script>
+    //Variablen
+    const sinW = document.getElementById("sinw");
+    const sinH = document.getElementById("sinhy");
+    const sinG = document.getElementById("singk");
+    const calcButton = document.getElementById("calc");
+    const sinResult = document.getElementById("result-sin");
+    const sinOther = document.getElementById("other-values");
+    
+
+    //Funktion
+    //Die 2 hinter den let Variablen bedeuten, dasss das eine Variable ist welche geändert wird und
+
+    calcButton.addEventListener("click", function (event) {
+      event.preventDefault();
+      let sinW2, sinW3, sinH2, sinG2, sinE;
+      
+      //Error Nachrichten
+      if (sinG.value === '0' ) {
+
+        location.reload();
+        alert("Zero can't be a value");
+
+      } else if (sinH.value === '0' ) {
+
+         location.reload();
+         alert("Zero can't be a value");
+
+      } else if (sinH.value === '' && sinG.value === ''){
+
+        location.reload();
+        alert("Zero can't be a value")
+
+      } else if (sinW.value === '') {
+        
+        //Angle Calculation
+        let sinW2 =  Math.acos(sinG.value / sinH.value);
+        let sinW3 = sinW2 * (180 / Math.PI);  
+        console.log(sinW3);
+        sinResult.innerText = "Sin-Angle: " + Math.round(sinW3 * 10000) / 10000;
+
+        //Other Values
+        //Anderer winkel
+        //Andere Seite
+        sinE = 180 - sinW3 -90;
+        sinG2 = Math.sqrt(Math.pow(sinH.value, 2) - Math.pow(sinG.value, 2));
+        sinOther.innerText = "Opposite angle: " + Math.round(sinE * 1000) / 1000 + " | Opposite cathetus: " + Math.round(sinG2 * 1000) / 1000;
+
+      } else if (sinG.value === '') {
+
+        //Ankate berechnung
+        let sinH2 = Math.cos(sinW.value * (Math.PI / 180)) * sinH.value;
+        console.log(sinH2);
+        console.log("hello");
+        sinResult.innerText = "opposite Cathetus: " + (Math.round(sinH2 * 10000) /10000);
+
+        //Other Values calculation
+        sinE = 180 - sinW.value -90;
+        sinG2 = Math.sqrt(Math.pow(sinH2, 2) - Math.pow(sinG.value, 2));
+        sinOther.innerText = "opposite Angle: " + Math.round(sinE * 1000) / 1000 + " | Opposite Cathetus: " + Math.round(sinG2 * 1000) / 1000;
+        
+      } else if (sinH.value === ''){
+        let sinG2 = sinG.value / Math.cos((sinW.value * Math.PI) / 180);
+        console.log(sinG2);
+        sinResult.innerText = "Hypotenuse: " + (Math.round(sinG2 * 10000) /10000);
+
+        //Other Values
+        sinE = 180 - sinW.value -90;
+        sinW2 = Math.sqrt(Math.pow(sinG2, 2) - Math.pow(sinG.value, 2));
+        sinOther.innerText = "Counter angle: " + Math.round(sinE * 1000) / 1000 + " | Opposite Cathetus: " + Math.round(sinW2 * 1000) / 1000;
+
+      }  else if (sinH.value <= sinG.value){
+
+        alert("Hypotenuse must be greater than the Ankhetus!");
+        location.reload();
+
+      }
+    });
+  </script>
+</body>
+</html>
