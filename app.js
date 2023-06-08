@@ -59,7 +59,7 @@
         let sinW2 =  Math.atan(sinG.value / sinH.value);
         let sinW3 = sinW2 * (180 / Math.PI);  
         console.log(sinW3)
-        sinResult.innerText = "Tan-Winkel: " + Math.round(sinW3 * 10000) / 10000;
+        sinResult.innerText = "Tan-Angle: " + Math.round(sinW3 * 10000) / 10000;
         //Anderer Winkel
         let angle2 = 180 - 90 - sinW3;
         sinSide = Math.sqrt(Math.pow(sinH.value, 2) + Math.pow(sinG.value, 2));
